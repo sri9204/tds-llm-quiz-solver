@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<body>
+<h1>Demo Quiz</h1>
+
+<script>
+const submitUrl = location.origin + "/submit-demo";
+document.write("<pre>"+JSON.stringify({
+ "email":"demo@example.com",
+ "secret":"your-secret",
+ "url":location.href,
+ "submit":submitUrl
+},null,2)+"</pre>");
+</script>
+
+</body>
+</html>
