@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<body>
+<h1>CSV Quiz</h1>
+
+<!-- We generate a visible absolute CSV URL -->
+<p id="csvurl"></p>
+
+<script>
+let csv = location.origin + "/tests/files/test.csv";
+document.getElementById("csvurl").innerText = csv;
+
+document.write("<a href='" + csv + "'>Download CSV</a>");
+
+document.write("<pre>"+JSON.stringify({
+ "email":"23f1001398@ds.study.iitm.ac.in",
+ "secret":"secret",
+ "url":location.href,
+ "submit":location.origin + "/submit-demo"
+}, null, 2)+"</pre>");
+</script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<body>
+<h1>Base64 Quiz</h1>
+
+<script>
+var encoded = btoa(JSON.stringify({
+  answer: 12345
+}));
+
+document.write("Encoded:<br>");
+document.write("atob('" + encoded + "')");
+
+document.write("<pre>"+JSON.stringify({
+ "email":"23f1001398@ds.study.iitm.ac.in",
+ "secret":"secret",
+ "url":location.href,
+ "submit":location.origin + "/submit-demo"
+}, null, 2)+"</pre>");
+</script>
+
+</body>
+</html>

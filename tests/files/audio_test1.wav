@@ -1,0 +1,1 @@
+[IO.File]::WriteAllBytes("tests/files/audio_test1.wav",[Convert]::FromBase64String("UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA="))

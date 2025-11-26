@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<body>
+<h1>Audio Quiz</h1>
+
+<!-- PRINT the audio URL so solver can detect it -->
+<p id="audiourl"></p>
+
+<script>
+// Construct absolute URL
+let audio = location.origin + "/tests/files/audio_test1.wav";
+
+// Make it visible in plain text
+document.getElementById("audiourl").innerText = audio;
+
+// Actual download link (not required but nice)
+document.write("<a href='" + audio + "'>Download Audio</a>");
+
+document.write("<pre>"+JSON.stringify({
+ "email":"23f1001398@ds.study.iitm.ac.in",
+ "secret":"secret",
+ "url":location.href,
+ "submit":location.origin + "/submit-demo"
+}, null, 2)+"</pre>");
+</script>
+
+</body>
+</html>

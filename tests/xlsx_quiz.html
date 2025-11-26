@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<body>
+<h1>XLSX Quiz</h1>
+
+<!-- Make XLSX URL visible -->
+<p id="xlsxurl"></p>
+
+<script>
+let xlsx = location.origin + "/tests/files/test.xlsx";
+document.getElementById("xlsxurl").innerText = xlsx;
+
+document.write("<a href='" + xlsx + "'>Download XLSX</a>");
+
+document.write("<pre>"+JSON.stringify({
+ "email":"23f1001398@ds.study.iitm.ac.in",
+ "secret":"secret",
+ "url":location.href,
+ "submit":location.origin + "/submit-demo"
+}, null, 2)+"</pre>");
+</script>
+
+</body>
+</html>
+
