@@ -1,5 +1,9 @@
-FROM python:3.11-slim
+FROM python:3.10-slim
 
+# Prevents interactive prompts during build
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install system dependencies for Playwright + PDF + audio
 RUN apt-get update && apt-get install -y \
     tesseract-ocr \
     git \
@@ -12,18 +16,24 @@ RUN apt-get update && apt-get install -y \
     libxrandr2 \
     libasound2 \
     libpangocairo-1.0-0 \
-    libgdk-pixbuf2.0-0 \
+    libgdk-pixbuf-2.0-0 \
+    libgdk-pixbuf-xlib-2.0-0 \
     ffmpeg \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
+# Copy files
 WORKDIR /app
-COPY requirements.txt .
+COPY . /app
+
+# Install Python dependencies
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-COPY . .
+# Install Chromium for Playwright
+RUN playwright install chromium
 
-RUN playwright install --with-deps
+EXPOSE 5000
+ENV PORT=5000
 
-ENV PORT=10000
-CMD ["gunicorn", "app:app", "-b", "0.0.0.0:10000", "--workers", "2", "--threads", "4"]
+CMD ["python", "app.py"]
