@@ -8,3 +8,4 @@ pillow==10.0.0
 pytesseract==0.3.11
 pytest==7.4.0
 pytest-asyncio==0.21.0
+

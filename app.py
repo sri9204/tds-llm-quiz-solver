@@ -31,14 +31,18 @@ import pandas as pd
 import pdfplumber
 from playwright.async_api import async_playwright
 
+
 # -------------------------
 # Configuration via ENV
 # -------------------------
-EXPECTED_SECRET = os.getenv("QUIZ_SECRET", "change_this_secret")
+EXPECTED_SECRET = os.getenv("QUIZ_SECRET")
+
 LLM_API_URL = os.getenv("LLM_API_URL")
 LLM_API_KEY = os.getenv("LLM_API_KEY")
+
 WHISPER_API_URL = os.getenv("WHISPER_API_URL")
 WHISPER_API_KEY = os.getenv("WHISPER_API_KEY")
+
 
 MAX_FILE_BYTES = int(os.getenv("MAX_FILE_BYTES", str(10 * 1024 * 1024)))
 TOTAL_TIMEOUT = int(os.getenv("TOTAL_TIMEOUT", "170"))
@@ -336,7 +340,7 @@ async def extract_answer_heuristics(page, page_text: str, page_handle, payload: 
                 return transcript, meta
 
     # 6) Base64 atob
-    b64_match = re.search(r"atob\\(['\"]([A-Za-z0-9+/=\\n\\r]+)['\"]\\)", page_html)
+    b64_match = re.search(r"atob\\(['\"]([A-Za-z0-9+/=\\n\\r]+)['\"]\\)", page_text)
     if b64_match:
         try:
             decoded = base64.b64decode(b64_match.group(1))
