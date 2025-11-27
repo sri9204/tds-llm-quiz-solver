@@ -33,7 +33,6 @@ RUN pip install -r requirements.txt
 # Install Chromium for Playwright
 RUN playwright install chromium
 
-EXPOSE 5000
-ENV PORT=5000
+
 
 CMD ["python", "app.py"]
