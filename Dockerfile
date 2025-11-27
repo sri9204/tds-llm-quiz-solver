@@ -1,9 +1,7 @@
 FROM python:3.10-slim
 
-# Prevents interactive prompts during build
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install system dependencies for Playwright + PDF + audio
 RUN apt-get update && apt-get install -y \
     tesseract-ocr \
     git \
@@ -22,17 +20,16 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy files
 WORKDIR /app
 COPY . /app
 
-# Install Python dependencies
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# Install Chromium for Playwright
-RUN python -m playwright install chromium
+RUN playwright install chromium
 
-
+EXPOSE 5000
+ENV PORT=5000
 
 CMD ["python", "app.py"]
+
