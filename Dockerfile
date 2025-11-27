@@ -1,8 +1,4 @@
 FROM python:3.10-slim
-# Fix DNS resolution on Render
-RUN printf "nameserver 8.8.8.8\nnameserver 1.1.1.1" > /etc/resolv.conf
-
-
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y \
