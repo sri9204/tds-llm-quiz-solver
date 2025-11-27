@@ -31,7 +31,7 @@ RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 # Install Chromium for Playwright
-RUN playwright install chromium
+RUN python -m playwright install chromium
 
 
 
